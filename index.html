@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="assessmentApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Assessment</title>
+
+    <!-- Libraries -->
+    <script src="angular.min.js"></script>
+
+    <!-- Custom -->
+    <script src="app.js"></script>
+
+  </head>
+  <body ng-controller="AssessmentController as ac">
+    <form ng-submit="ac.addMessage()">
+      <label for="messageInput">Input Message</label>
+      <input type="text" id="messageInput" ng-model="ac.inputMessage"/>
+      <input type="submit" />
+    </form>
+    <div class="firstMessageContainer col-md-6" ng-show="ac.showFirst">
+      Message is: {{ac.firstMessage}}
+    </div>
+
+    <div class="previousMessageContainer" ng-show="ac.messageList.length !== 0">
+      Previous Messages:
+      <p ng-repeat="message in ac.messageList">
+        {{message}}
+      </p>
+    </div>
+  </body>
+</html>
